@@ -1,0 +1,28 @@
+services:
+  dotnet-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dotnet-docker-app
+    environment:
+      - DOTNET_ENVIRONMENT=Production
+    # コンソールアプリの場合、引数を渡すことができます
+    # command: ["10"]  # 例：10回カウントして終了
+    restart: unless-stopped
+    # ログを確認しやすくするため
+    stdin_open: true
+    tty: true
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=tech
+      - MYSQL_DATABASE=myapp
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+
+volumes:
+  mysql_data: 
