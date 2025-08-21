@@ -1,9 +1,11 @@
-﻿var counter = 0;
-var max = args.Length is not 0 ? Convert.ToInt32(args[0]) : -1;
-
-while (max is -1 || counter < max)
-{
-    Console.WriteLine($"Counter: {++counter}");
-
-    await Task.Delay(TimeSpan.FromMilliseconds(1_000));
+﻿namespace BlackjackApp {
+    class Program {
+        static void Main(string[] args) {
+            var deck = new Deck();
+            var player = new Player(new Hand(), deck, "Player");
+            var dealer = new Player(new Hand(), deck, "Dealer");
+            var game = new Game(player, dealer);
+            game.Run();
+        }
+    }  
 }

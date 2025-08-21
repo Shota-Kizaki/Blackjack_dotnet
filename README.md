@@ -1,6 +1,47 @@
-# Docker Composeを使用したアプリケーションの実行方法
+# ブラックジャック .NET アプリケーション
 
-## 基本的な使い方
+このプロジェクトは、.NET 8を使用したブラックジャックゲームです。Docker Composeまたは直接.NETコマンドで実行できます。
+
+## .NET コマンドでの実行方法
+
+### 1. アプリケーションの実行
+```bash
+dotnet run
+```
+
+### 2. アプリケーションのビルド
+```bash
+dotnet build
+```
+
+### 3. リリースビルド
+```bash
+dotnet build --configuration Release
+```
+
+### 4. アプリケーションの発行
+```bash
+dotnet publish --configuration Release --runtime linux-x64 --output ./publish
+```
+
+### 5. テストの実行（テストプロジェクトがある場合）
+```bash
+dotnet test
+```
+
+### 6. 依存関係の復元
+```bash
+dotnet restore
+```
+
+### 7. プロジェクトのクリーン
+```bash
+dotnet clean
+```
+
+## Docker Composeを使用したアプリケーションの実行方法
+
+### 基本的な使い方
 
 ### 1. アプリケーションのビルドと起動
 ```bash
